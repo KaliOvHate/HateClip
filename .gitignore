@@ -1,0 +1,28 @@
+# Rust and Tauri build output
+/target
+/app/gen
+
+# Release artifacts
+*.dmg
+*.app/
+
+# Apple signing and notarization material (never commit)
+*.p8
+*.p12
+*.cer
+*.certSigningRequest
+*.mobileprovision
+*.provisionprofile
+.env
+.env.*
+
+# Logs and local databases from manual testing
+*.log
+*.sqlite
+*.sqlite3
+*.db
+
+# Editor and OS files
+.DS_Store
+.vscode/
+.idea/

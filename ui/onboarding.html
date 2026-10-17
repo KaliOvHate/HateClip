@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Welcome to HateClip</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <div class="hero">
+      <img src="app-icon.png" alt="">
+      <div>
+        <h1>Welcome to HateClip</h1>
+        <div class="muted">Everything you copy, one shortcut away.</div>
+      </div>
+    </div>
+
+    <h2>How it works</h2>
+    <div class="card"><div class="field" style="display:block; line-height:1.6">
+      HateClip lives in the menu bar and remembers what you copy. Press
+      <kbd id="shortcut">Cmd Shift V</kbd> anywhere to open your history, type to search,
+      and press <kbd>Enter</kbd> to paste the selected item into the app you were using.
+    </div></div>
+
+    <h2>Allow pasting</h2>
+    <div class="card">
+      <div class="field" style="display:block; line-height:1.6">
+        To paste for you, macOS needs to let HateClip send the Cmd+V keystroke. HateClip does not read your screen or what you type.
+        <ol class="steps">
+          <li>Click <b>Open System Settings</b>.</li>
+          <li>Turn on <b>HateClip</b> under Privacy and Security, Accessibility.</li>
+          <li>Come back here. This page updates by itself.</li>
+        </ol>
+        <span class="status"><span class="dot" id="ax-dot"></span><span id="ax-text">Not allowed yet</span></span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="skip">Continue without auto-paste</button>
+      <button class="primary" id="grant">Open System Settings</button>
+      <button class="primary" id="done" style="display:none">Start using HateClip</button>
+    </div>
+  </div>
+  <script src="onboarding.js"></script>
+</body>
+</html>

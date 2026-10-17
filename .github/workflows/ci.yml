@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo fmt --all --check
+      - run: cargo clippy --workspace --all-targets -- -D warnings
+      - run: cargo test --workspace
+
+  bundle:
+    needs: test
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-apple-darwin, x86_64-apple-darwin
+      - uses: Swatinem/rust-cache@v2
+      - name: Install tauri-cli
+        run: cargo install tauri-cli --version 2.12.3 --locked
+      - name: Build universal app and dmg
+        run: cargo tauri build --target universal-apple-darwin --config app/tauri.conf.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: HateClip-dmg
+          path: target/universal-apple-darwin/release/bundle/dmg/*.dmg

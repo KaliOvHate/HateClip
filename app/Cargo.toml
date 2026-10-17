@@ -1,0 +1,25 @@
+[package]
+name = "hateclip"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Clipboard history for macOS"
+default-run = "hateclip"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+hateclip-core = { path = "../crates/hateclip-core" }
+hateclip-macos = { path = "../crates/hateclip-macos" }
+anyhow.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tracing-appender = "0.2"
+tauri = { version = "2", features = ["tray-icon", "image-png", "protocol-asset", "macos-private-api"] }
+tauri-plugin-autostart = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-global-shortcut = "2"
+tauri-plugin-single-instance = "2"

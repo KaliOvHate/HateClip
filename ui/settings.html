@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>HateClip Settings</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <h1>Settings</h1>
+    <div class="muted" id="version"></div>
+
+    <h2>General</h2>
+    <div class="card">
+      <div class="field">
+        <label>Open clipboard history<span class="hint">Click, then press the new key combination.</span></label>
+        <button class="recorder" id="shortcut"></button>
+      </div>
+      <div class="field">
+        <label for="launch">Open HateClip when you log in</label>
+        <input type="checkbox" id="launch">
+      </div>
+      <div class="field">
+        <label for="paused">Pause recording<span class="hint">While paused, nothing you copy is saved.</span></label>
+        <input type="checkbox" id="paused">
+      </div>
+    </div>
+
+    <h2>History</h2>
+    <div class="card">
+      <div class="field">
+        <label for="max-items">Keep up to<span class="hint">Pinned items do not count and are never removed.</span></label>
+        <select id="max-items">
+          <option value="100">100 items</option>
+          <option value="500">500 items</option>
+          <option value="1000">1,000 items</option>
+          <option value="5000">5,000 items</option>
+          <option value="20000">20,000 items</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="max-age">Remove items older than</label>
+        <select id="max-age">
+          <option value="0">Never</option>
+          <option value="1">1 day</option>
+          <option value="7">1 week</option>
+          <option value="30">1 month</option>
+          <option value="90">3 months</option>
+          <option value="365">1 year</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="images">Save copied images</label>
+        <input type="checkbox" id="images">
+      </div>
+      <div class="field">
+        <label>Stored items<span class="hint" id="data-dir"></span></label>
+        <span id="item-count" class="muted"></span>
+        <button class="danger" id="clear">Clear History</button>
+      </div>
+    </div>
+
+    <h2>Privacy</h2>
+    <div class="card">
+      <div class="field stack">
+        <label for="excluded">Never record copies from these apps<span class="hint">One app identifier per line. Password managers that mark their copies as private are always skipped.</span></label>
+        <textarea id="excluded" spellcheck="false"></textarea>
+        <div style="display:flex; gap:8px; align-items:center">
+          <select id="sources" style="flex:1"><option value="">Add an app you copied from recently...</option></select>
+          <button id="add-source">Add</button>
+        </div>
+      </div>
+    </div>
+
+    <h2>Paste permission</h2>
+    <div class="card">
+      <div class="field">
+        <label>Accessibility access<span class="hint">Needed to paste into other apps. Without it, HateClip copies the item and you press Cmd+V yourself.</span></label>
+        <span class="status"><span class="dot" id="ax-dot"></span><span id="ax-text"></span></span>
+        <button id="ax-btn">Open System Settings</button>
+      </div>
+    </div>
+
+    <div class="error" id="error"></div>
+  </div>
+  <script src="settings.js"></script>
+</body>
+</html>
